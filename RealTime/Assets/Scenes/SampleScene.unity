@@ -331,6 +331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 742309763}
   - component: {fileID: 742309764}
+  - component: {fileID: 742309765}
   m_Layer: 0
   m_Name: ScenarioManager
   m_TagString: Untagged
@@ -365,6 +366,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenario_Main_Num: 0
+--- !u!114 &742309765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742309762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037bdc7d21765924fb7fc2f4f73e5b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

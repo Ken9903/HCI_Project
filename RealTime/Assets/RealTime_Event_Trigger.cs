@@ -7,6 +7,7 @@ public class RealTime_Event_Trigger : MonoBehaviour
 {
     //참조
     public ScenarioManager scenarioManager;
+    public LocalNotification localNotification;
 
 
     public float courutine_wait_second = 3f; //최적화 변수
@@ -39,6 +40,13 @@ public class RealTime_Event_Trigger : MonoBehaviour
                 //
                 scenarioManager.scenario_Main_Num++; //다음 시나리오로 이동
             }
+
+
+            //알람 초기화 //SpanTime이 매개변수 *** 테스트 필요 ***
+            localNotification.AddLocalNotification(span); // 지속적으로 알람을 초기화 -> 생성 -> 초기회 -> 생성 해줌
+            
+
+
             yield return new WaitForSeconds(courutine_wait_second);
         }
 
@@ -60,7 +68,7 @@ public class RealTime_Event_Trigger : MonoBehaviour
     {
         //첫 시작, 늦게 접속한 만큼 시나리오 넘버 올려주고 Notwatch 올리기
         double passed_time_ = passed_time();
-        for(int i = 0; i < scenarioManager.scenario_count; i++) //***테스트 아직 못해봄
+        for(int i = 0; i < scenarioManager.scenario_count; i++) //*** 테스트 필요 ***
         {
             if(passed_time_ >= triggerTime[i] && scenarioManager.watch_scenario[i] == false) //정시가 지났는데 못봄
             {
@@ -81,7 +89,7 @@ public class RealTime_Event_Trigger : MonoBehaviour
         }
 
 
-        //메인 체크 시작
+        //메인 체크 시작 -> 모든 시나리오는 여기서 시작
         StartCoroutine(checkTrigger());
     }
 

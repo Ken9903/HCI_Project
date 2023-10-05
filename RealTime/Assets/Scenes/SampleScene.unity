@@ -366,6 +366,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenario_Main_Num: 0
+  scenario_count: 20
+  watch_scenario: 000000
+  notWatch: 0
 --- !u!114 &742309765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +381,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 037bdc7d21765924fb7fc2f4f73e5b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenarioManager: {fileID: 742309764}
+  courutine_wait_second: 1
+  init: 0
+  triggerTime: 050000000f0000001e000000
+  waitTriggerTime: 030000000400000005000000
+--- !u!1 &956070625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 956070627}
+  - component: {fileID: 956070626}
+  m_Layer: 0
+  m_Name: NotificationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &956070626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956070625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b203dbbfc673c0a4ab6632125ea135db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &956070627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956070625}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 996.1797, y: 569.55554, z: -25.097876}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,8 +759,28 @@ MonoBehaviour:
     - "\u314B\u314B\u314B\u314B\u314B\u314B\u314B\u314B\u314B\u314B"
     - "\u314E\u3147\u314E\u3147\u314E\u3147"
     - "\uAD73\uAD73"
-  - chatData: []
-  - chatData: []
+  - chatData:
+    - "\uC548\uB155\uD558\uC138\uC694"
+    - "\uC548\uB155"
+    - acz
+    - d
+    - sda
+    - d
+    - xc
+    - dfa
+    - s
+    - fasd
+  - chatData:
+    - esd
+    - d
+    - zx
+    - dx
+    - asd
+    - da
+    - eq
+    - ww
+    - ax
+    - vadwas
   nameList:
   - gda301
   - deasdd09

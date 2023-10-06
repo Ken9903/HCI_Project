@@ -382,6 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenarioManager: {fileID: 742309764}
+  localNotification: {fileID: 956070626}
   courutine_wait_second: 1
   init: 0
   triggerTime: 050000000f0000001e000000

@@ -8,6 +8,7 @@ public class RealTime_Event_Trigger : MonoBehaviour
     //참조
     public ScenarioManager scenarioManager;
     public LocalNotification localNotification;
+    public DataController dataController;
 
 
     public float courutine_wait_second = 3f; //최적화 변수
@@ -16,7 +17,7 @@ public class RealTime_Event_Trigger : MonoBehaviour
 
 
     //시간 관련
-    DateTime startTime = new DateTime(); //***데이터 세이브해서 앱이 재 기동되도 유지해줘야함.
+    public DateTime startTime = new DateTime(); //***데이터 세이브해서 앱이 재 기동되도 유지해줘야함.
     DateTime currentTime = new DateTime();
     TimeSpan span;
 
@@ -39,6 +40,9 @@ public class RealTime_Event_Trigger : MonoBehaviour
                 scenarioManager.watch_scenario[scenarioManager.scenario_Main_Num] = true;
                 //
                 scenarioManager.scenario_Main_Num++; //다음 시나리오로 이동
+
+                //데이터 세이브
+                dataController.SaveGameData();
             }
 
 
@@ -53,13 +57,14 @@ public class RealTime_Event_Trigger : MonoBehaviour
     }
     private void Awake()
     {
-        //
-        //init,startTime 세이브 불러오기
+        // init 체크전 데이터 로드 보장
+        dataController.LoadGameData();
         //
 
         if(init == false)
         {
             startTime = DateTime.Now;
+            Debug.Log("시작 시간 초기화 완료");
             init = true;
         }
     }
@@ -84,6 +89,8 @@ public class RealTime_Event_Trigger : MonoBehaviour
                     //못봤으니 다음 메인 시나리오로 이동
                     scenarioManager.watch_scenario[i] = true;
                     scenarioManager.scenario_Main_Num++;
+
+                    dataController.SaveGameData();
                 }
             }
         }
@@ -93,7 +100,7 @@ public class RealTime_Event_Trigger : MonoBehaviour
         StartCoroutine(checkTrigger());
     }
 
-    private double passed_time()
+    public double passed_time()
     {
         currentTime = DateTime.Now;
         span = currentTime - startTime;

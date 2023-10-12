@@ -24,6 +24,8 @@ public class UI_Debug : MonoBehaviour
 
     }
 
+
+
     private void Start()
     {
         StartCoroutine(debug());

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChattingManager : MonoBehaviour
+public class ChattingManager : MonoBehaviour //***시나리오 넘버에 연동이아닌 독자적 변수 제어로 좀더 다양성 있게 가야할 필요있음
 {
     //참조 클래스
     public ScenarioManager scenarioManager;

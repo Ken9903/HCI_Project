@@ -46,8 +46,9 @@ public class RealTime_Event_Trigger : MonoBehaviour
             }
 
 
-            //알람 초기화 //SpanTime이 매개변수 *** 테스트 필요 ***
-            localNotification.AddLocalNotification(span); // 지속적으로 알람을 초기화 -> 생성 -> 초기회 -> 생성 해줌
+            //알람 초기화 //SpanTime이 매개변수 *** 테스트 필요 *** 한번 알람뜨고 안보면 다음 알람 안뜸 -> 한번에 여러개 알람 생성
+            TimeSpan nextTimeSpan = new TimeSpan(0, 0, 0, triggerTime[scenarioManager.scenario_Main_Num]);
+            localNotification.AddLocalNotification(nextTimeSpan - span); // 지속적으로 알람을 초기화 -> 생성 -> 초기회 -> 생성 해줌
             
 
 
@@ -83,6 +84,17 @@ public class RealTime_Event_Trigger : MonoBehaviour
                     Debug.Log("못봤어...");
                     //다수를 못봤을 때에는 따로 처리 해야함
                     Debug.Log("시나리오" + scenarioManager.scenario_Main_Num + "번 못봄");
+                    if(scenarioManager.scenario_Main_Num == 1)
+                    {
+                        scenarioManager.first_turning_point = 5; //못봄
+                        Debug.Log("퍼스트 터닝포인트 변경 " + scenarioManager.first_turning_point + " 5가 디버그 번호");
+                    }
+                    else if(scenarioManager.scenario_Main_Num == 2)
+                    {
+                        scenarioManager.second_turning_point = 5;
+                        Debug.Log("세컨드 터닝포인트 변경" + scenarioManager.second_turning_point + "5가 디버그 번호");
+                    }
+                    //쭉쭉 나가기
                     //***
                     scenarioManager.notWatch++;
 

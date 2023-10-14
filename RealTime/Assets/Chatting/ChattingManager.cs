@@ -17,14 +17,14 @@ public class ChattingManager : MonoBehaviour //***시나리오 넘버에 연동이아닌 독�
     public ChatDataList[] chatList; //시나리오 분별 
     public string[] nameList;
     public bool[] sex; //nameList랑 인덱스로 연동 0:남자 1:여자
-    public GameObject[] currentChatList = new GameObject[5] { null, null, null, null, null }; //***5는 max_chat_num이랑 동기화 필요***
+    public GameObject[] currentChatList = new GameObject[7] { null, null, null, null, null, null, null }; //***5는 max_chat_num이랑 동기화 필요***
     public Transform[] chatPoint; //고정 배열로 개선 여지 있음
 
 
     //변수
     public int wait_next_chat_max = 200; //다음 채팅이 올라오기까지 걸리는 시간 -> 랜덤값으로 화제성 표현 해줌 *0.01연산 필요
     public int wait_next_chat_min = 50;
-    public int max_chat_num = 5;
+    public int max_chat_num = 7;
     private int current_chat_num = 0;
     public int max_chat_kind = 10; //메인 시나리오 하나에 들어갈 수 있는 모든 채팅 종류 갯수
 
@@ -40,8 +40,8 @@ public class ChattingManager : MonoBehaviour //***시나리오 넘버에 연동이아닌 독�
         {
             if (current_chat_num == max_chat_num) // 현재 채팅이 최대치 일 때
             {
-                Destroy(currentChatList[4]); //가장 위에있는 채팅 삭제
-                currentChatList[4] = null;
+                Destroy(currentChatList[max_chat_num - 1]); //가장 위에있는 채팅 삭제 
+                currentChatList[max_chat_num - 1] = null;
                 current_chat_num--;
             }
 

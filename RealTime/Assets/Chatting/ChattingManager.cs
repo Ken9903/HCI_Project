@@ -35,6 +35,9 @@ public class ChattingManager : MonoBehaviour //***½Ã³ª¸®¿À ³Ñ¹ö¿¡ ¿¬µ¿ÀÌ¾Æ´Ñ µ¶À
     public GameObject chatUi; //UiÅÛÇÃ¸´
     public Sprite manImage;
     public Sprite womanImage;
+    public GameObject donation_panel; //µµ³×ÀÌ¼Ç ÀüÃ¼ Ui
+    public GameObject donate_name_money;
+    public GameObject donate_content;
     
     IEnumerator playChatting()
     {
@@ -129,7 +132,16 @@ public class ChattingManager : MonoBehaviour //***½Ã³ª¸®¿À ³Ñ¹ö¿¡ ¿¬µ¿ÀÌ¾Æ´Ñ µ¶À
         player_chatting = false;
     }
 
+    public IEnumerator donate(string name, int money, string content, float delay)
+    {
+        donation_panel.SetActive(true);
+        donate_name_money.GetComponent<Text>().text = name + "´ÔÀÌ" + money + "¿øÀ» ÈÄ¿øÇÏ¼Ì½À´Ï´Ù.";
+        donate_content.GetComponent<Text>().text = content;
+        yield return new WaitForSeconds(delay);
+        donation_panel.SetActive(false);
+    }
 
+ 
 
 
 
@@ -137,5 +149,6 @@ public class ChattingManager : MonoBehaviour //***½Ã³ª¸®¿À ³Ñ¹ö¿¡ ¿¬µ¿ÀÌ¾Æ´Ñ µ¶À
     void Start()
     {
         StartCoroutine(playChatting());
+        StartCoroutine(donate("guest", 1000, "³»°¡ ÈÄ¿øÀ» ÇÑ´Ù", 5));
     }
 }

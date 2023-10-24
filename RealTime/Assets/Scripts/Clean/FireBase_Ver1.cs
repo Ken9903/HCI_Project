@@ -26,6 +26,7 @@ public class FireBase_Ver1 : MonoBehaviour
         {
             if(task.Result == Firebase.DependencyStatus.Available)
             {
+                Debug.Log("start");
                 FirebaseInit();
             }
             else
@@ -57,6 +58,14 @@ public class FireBase_Ver1 : MonoBehaviour
                 Debug.Log("user ID is : " + user.UserId);
                 Debug_Text_user.text = "User ID : " + user.UserId;
             }
+            else
+            {
+                Debug.Log("2");
+            }
+        }
+        else
+        {
+            Debug.Log("1");
         }
     }
 

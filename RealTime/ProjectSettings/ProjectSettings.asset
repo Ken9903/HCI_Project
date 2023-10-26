@@ -685,7 +685,13 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: USE_TIMELINE
+    4: USE_TIMELINE
+    7: USE_TIMELINE
+    13: USE_TIMELINE
+    14: USE_TIMELINE
+    25: USE_TIMELINE
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PixelCrushers.DialogueSystem;
 
 public class ChattingManager : MonoBehaviour //***½Ã³ª¸®¿À ³Ñ¹ö¿¡ ¿¬µ¿ÀÌ¾Æ´Ñ µ¶ÀÚÀû º¯¼ö Á¦¾î·Î Á»´õ ´Ù¾ç¼º ÀÖ°Ô °¡¾ßÇÒ ÇÊ¿äÀÖÀ½
 {
@@ -10,7 +11,7 @@ public class ChattingManager : MonoBehaviour //***½Ã³ª¸®¿À ³Ñ¹ö¿¡ ¿¬µ¿ÀÌ¾Æ´Ñ µ¶À
     public ScenarioManager scenarioManager;
     public InputField player_chat_input;
 
-    [Serializable] 
+    [Serializable]
     public class ChatDataList
     {
         public string[] chatData; // ½ÇÁ¦ ´ëÈ­ ³»¿ë 
@@ -38,12 +39,12 @@ public class ChattingManager : MonoBehaviour //***½Ã³ª¸®¿À ³Ñ¹ö¿¡ ¿¬µ¿ÀÌ¾Æ´Ñ µ¶À
     public GameObject donation_panel; //µµ³×ÀÌ¼Ç ÀüÃ¼ Ui
     public GameObject donate_name_money;
     public GameObject donate_content;
-    
+
     IEnumerator playChatting()
     {
-        while(true)
+        while (true)
         {
-            if(player_chatting == false)
+            if (player_chatting == false)
             {
                 if (current_chat_num == max_chat_num) // ÇöÀç Ã¤ÆÃÀÌ ÃÖ´ëÄ¡ ÀÏ ¶§
                 {
@@ -91,9 +92,9 @@ public class ChattingManager : MonoBehaviour //***½Ã³ª¸®¿À ³Ñ¹ö¿¡ ¿¬µ¿ÀÌ¾Æ´Ñ µ¶À
             {
                 yield return new WaitForSeconds(.1f); //***¹ö±× Ã¼Å© ÇÊ¿ä
             }
-            
+
         }
-      
+
     }
 
 
@@ -113,7 +114,7 @@ public class ChattingManager : MonoBehaviour //***½Ã³ª¸®¿À ³Ñ¹ö¿¡ ¿¬µ¿ÀÌ¾Æ´Ñ µ¶À
 
         currentChatUi.transform.GetChild(0).GetComponent<Text>().text = chat; //ÅØ½ºÆ® º¯°æ
         currentChatUi.transform.GetChild(0).GetComponent<Text>().color = Color.blue;
-       currentChatUi.transform.GetChild(1).GetComponent<Text>().text = "Guest356"; //ÀÌ¸§ -> µû·Î ¹Þ¾Æ¿À±â
+        currentChatUi.transform.GetChild(1).GetComponent<Text>().text = "Guest356"; //ÀÌ¸§ -> µû·Î ¹Þ¾Æ¿À±â
         currentChatUi.transform.GetChild(2).GetComponent<Image>().sprite = manImage; // ¼ºº° ¹Þ¾Æ¿À±â
 
         for (int i = max_chat_num - 1; i >= 0; i--) //¸Ç À§¿¡¼­ºÎÅÍ ¾Æ·¡·Î Á¶Á¤
@@ -132,7 +133,7 @@ public class ChattingManager : MonoBehaviour //***½Ã³ª¸®¿À ³Ñ¹ö¿¡ ¿¬µ¿ÀÌ¾Æ´Ñ µ¶À
         player_chatting = false;
     }
 
-    public IEnumerator donate(string name, int money, string content, float delay)
+    public IEnumerator donate(string name, System.Single money, string content, System.Single delay)
     {
         donation_panel.SetActive(true);
         donate_name_money.GetComponent<Text>().text = name + "´ÔÀÌ" + money + "¿øÀ» ÈÄ¿øÇÏ¼Ì½À´Ï´Ù.";
@@ -141,7 +142,11 @@ public class ChattingManager : MonoBehaviour //***½Ã³ª¸®¿À ³Ñ¹ö¿¡ ¿¬µ¿ÀÌ¾Æ´Ñ µ¶À
         donation_panel.SetActive(false);
     }
 
- 
+    public void playDonate(string name, System.Single money, string content, System.Single delay)
+    {
+        StartCoroutine(donate(name, money, content, delay));
+    }
+
 
 
 
@@ -149,6 +154,15 @@ public class ChattingManager : MonoBehaviour //***½Ã³ª¸®¿À ³Ñ¹ö¿¡ ¿¬µ¿ÀÌ¾Æ´Ñ µ¶À
     void Start()
     {
         StartCoroutine(playChatting());
-        StartCoroutine(donate("guest", 1000, "³»°¡ ÈÄ¿øÀ» ÇÑ´Ù", 5));
+        //StartCoroutine(donate("guest", 1000, "³»°¡ ÈÄ¿øÀ» ÇÑ´Ù", 5));
+    }
+
+    private void OnEnable()
+    {
+        Lua.RegisterFunction("playDonate", this, SymbolExtensions.GetMethodInfo(() => playDonate((string)"", (int)0, (string)"", (float)0)));
+    }
+    private void OnDisable()
+    {
+        Lua.UnregisterFunction("playDonate");
     }
 }

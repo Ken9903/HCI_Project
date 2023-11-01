@@ -16,6 +16,9 @@ public class FireBase_Ver1 : MonoBehaviour
     private FirebaseAuth auth;
     private FirebaseUser user;
 
+    // Debug 용 Text
+    public Text Debug_Text_user;
+    public Text Debug_Text2;
 
 
     // Start is called before the first frame update
@@ -39,6 +42,7 @@ public class FireBase_Ver1 : MonoBehaviour
     public void SignIn()
     {
         SignInAnonymous();
+        Debug_Text2.text = "Sign in!";
     }
 
     public Task SigninAnonymous()
@@ -61,6 +65,8 @@ public class FireBase_Ver1 : MonoBehaviour
     public void SignOut()
     {
         auth.SignOut();
+        Debug_Text_user.text = "User ID : ";
+        Debug_Text2.text = "Sign Out!";
     }
 
     private void FirebaseInit()
@@ -77,7 +83,8 @@ public class FireBase_Ver1 : MonoBehaviour
             user = senderAuth.CurrentUser;
             if(user != null)
             {
-                Debug.Log("ID배부완료");
+                Debug.Log("user ID is : " + user.UserId);
+                Debug_Text_user.text = "User ID : " + user.UserId;
             }
             else
             {
@@ -133,11 +140,7 @@ public class FireBase_Ver1 : MonoBehaviour
                 if (task.IsCompleted)
                 {
                     Debug.Log("Update Vote Complete");
-                    //StartCoroutine(uiController.viewResult(voteName));
-                }
-                else
-                {
-                    Debug.Log("update vote fail");
+                    StartCoroutine(uiController.viewResult(voteName));
                 }
             });
     }

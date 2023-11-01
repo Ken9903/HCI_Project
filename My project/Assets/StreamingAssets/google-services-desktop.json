@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "334545306761",
+    "firebase_url": "https://test-5913d-default-rtdb.firebaseio.com",
+    "project_id": "test-5913d",
+    "storage_bucket": "test-5913d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334545306761:android:e9cf83d863f0a42bd7f258",
+        "android_client_info": {
+          "package_name": "com.Nopigom.test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZOqgtji0hHS_JPo81xAiI434IYC23IEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

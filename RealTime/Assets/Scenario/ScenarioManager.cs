@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PixelCrushers.DialogueSystem;
+
 
 public class ScenarioManager : MonoBehaviour
 {
@@ -13,5 +15,18 @@ public class ScenarioManager : MonoBehaviour
     public bool[] watch_scenario;
 
     public int notWatch = 0;
+
+
     
+
+
+    private void OnEnable()
+    {
+        //Lua.RegisterFunction("playDonate", this, SymbolExtensions.GetMethodInfo(() => playDonate((string)"", (int)0, (string)"", (float)0)));
+    }
+    private void OnDisable()
+    {
+        //Lua.UnregisterFunction("playDonate");
+    }
+
 }

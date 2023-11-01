@@ -3,45 +3,75 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-using PixelCrushers.DialogueSystem;
 
 public class UIControl_Ver1 : MonoBehaviour
 {
     public Vote_Slider voteSlider;
     public FireBase_Ver1 firebase;
+    public GameObject VoteUI;
+    public Button AgreeBtn;
+    public Button DisagreeBtn;
     public GameObject ResultUI;
 
     public Text Result_Txt;
     public Image PieChart;
 
+    // Vote UI 가 켜져 있는지 체크하는 bool 값
+    public bool VoteUIOn = false;
+
     public Button Trigger;
 
-    
+    void Update()
+    {
+        // 임시로 투표 등장 트리거 만들기
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            AppearVote("Vote2");
+            Debug.Log("Vote Appear");
+        }
+        
+        
+    }
 
+    // Vote UI를 생성하면서 각 버튼에 voteName(이벤트 이름)이 담긴 함수를 넘겨줌.
+    public void AppearVote(string voteName)
+    {
+        VoteUIOn = true;
+        VoteUI.SetActive(true);
+        AgreeBtn.onClick.AddListener(delegate { Agree(voteName); });
+        DisagreeBtn.onClick.AddListener(delegate { Disagree(voteName); });
+
+        // timer
+        voteSlider.SetEndTime(5);
+    }
 
     // Agree 버튼에 할당될 함수
-    // Vote2가 Debug이름
     public void Agree(string voteName)
     {
-          firebase.SendVote(voteName, true);
+        if(VoteUIOn == true)
+        {
+            firebase.SendVote(voteName, true);
+            VoteUIOn = false;
+        }
     }
 
     // Disagree 버튼에 할당될 함수
     public void Disagree(string voteName)
     {
-          firebase.SendVote(voteName, false);
+        if(VoteUI == true)
+        {
+            firebase.SendVote(voteName, false);
+            VoteUIOn = false;
+        }
     }
 
     // 5초간 Result 화면을 보여주고 꺼지는 IEnumerator 함수
     public IEnumerator viewResult(string voteName)
     {
+        VoteUI.SetActive(false);
         firebase.CountVote(voteName);
         yield return new WaitForSeconds(5);
         ResultUI.SetActive(false);
-    }
-    public void viewResultStart(string voteName)
-    {
-        StartCoroutine(viewResult(voteName));
     }
 
     public void ResultChange(long agreeCount, long DisagreeCount)
@@ -73,20 +103,6 @@ public class UIControl_Ver1 : MonoBehaviour
             PieChart.fillAmount = Mathf.Lerp(0, 1, time);
             yield return null;
         }
-    }
-
-
-    private void OnEnable()
-    {
-        Lua.RegisterFunction("Agree", this, SymbolExtensions.GetMethodInfo(() => Agree((string)"")));
-        Lua.RegisterFunction("Disagree", this, SymbolExtensions.GetMethodInfo(() => Disagree((string)"")));
-        Lua.RegisterFunction("viewResultStart", this, SymbolExtensions.GetMethodInfo(() => viewResultStart((string)"")));
-    }
-    private void OnDisable()
-    {
-        Lua.UnregisterFunction("Agree");
-        Lua.UnregisterFunction("Disagree");
-        Lua.UnregisterFunction("viewResultStart");
     }
 
 }

@@ -6,7 +6,6 @@ using System;
 
 public class Vote_Slider : MonoBehaviour
 {
-    /*
     public Slider timer;
     public float delay = 5f;
     
@@ -57,5 +56,4 @@ public class Vote_Slider : MonoBehaviour
         FinishTime = End_time;
         PlayerPrefs.SetFloat("EndTime", End_time);
     }
-    */
 }

@@ -31,7 +31,7 @@ public class RealTime_Event_Trigger : MonoBehaviour
         while(true) //***시나리오 중에는 체크 안해도 됨.
         {
             double passed_time_ = passed_time();
-            Debug.Log(passed_time_);
+            //Debug.Log(passed_time_);
 
             if (passed_time_ >= triggerTime[scenarioManager.scenario_Main_Num])
             {

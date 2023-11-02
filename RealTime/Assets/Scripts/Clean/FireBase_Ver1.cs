@@ -16,6 +16,7 @@ public class FireBase_Ver1 : MonoBehaviour
     private FirebaseAuth auth;
     private FirebaseUser user;
 
+    public ScenarioManager scenarioManager;
 
 
     // Start is called before the first frame update
@@ -164,6 +165,69 @@ public class FireBase_Ver1 : MonoBehaviour
                     Debug.Log("Agree Count : " + snapshot.Child("Agree").ChildrenCount);
                     uiController.ResultChange(snapshot.Child("Agree").ChildrenCount,
                         snapshot.Child("Disagree").ChildrenCount);
+                }
+            });
+    }
+
+    public void CountVote_makeWay_Scenario(string voteName)
+    {
+        DatabaseReference voteDB = FirebaseDatabase.DefaultInstance.GetReference(voteName);
+
+        voteDB.GetValueAsync().ContinueWithOnMainThread(
+            task =>
+            {
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("Read Error");
+                }
+                else if (task.IsCompleted)
+                {
+                    DataSnapshot snapshot = task.Result;
+                    // 쓰레드 안에서 변수를 return 해주는 게 불가능 해서 다른 함수로 넘겨줘야 함.
+                    // 기타 사항으로 foreach문을 통해 각각의 데이터를 불러올 수도 있음.
+                    // 찬성 유저수, 반대 유저수를 Debug로 찍어보기
+                    Debug.Log("Agree Count : " + snapshot.Child("Agree").ChildrenCount);
+                    if(voteName == "Vote1")
+                    {
+                        Debug.Log("vote1");
+                        if (snapshot.Child("Agree").ChildrenCount > snapshot.Child("Disagree").ChildrenCount)
+                        {
+                            scenarioManager.first_turning_point = 1;
+                            Debug.Log("vote1 -> 1");
+                        }
+                        else //같은 경우 처리 필요
+                        {
+                            scenarioManager.first_turning_point = 0;
+                            Debug.Log("vote1 -> 0");
+                        }
+                    }
+                    else if(voteName == "Vote2")
+                    {
+                        if (snapshot.Child("Agree").ChildrenCount > snapshot.Child("Disagree").ChildrenCount)
+                        {
+                            scenarioManager.second_turning_point = 1;
+                        }
+                        else //같은 경우 처리 필요
+                        {
+                            scenarioManager.second_turning_point = 0;
+                        }
+                    }
+                    else if (voteName == "Vote3")
+                    {
+                        if (snapshot.Child("Agree").ChildrenCount > snapshot.Child("Disagree").ChildrenCount)
+                        {
+                            scenarioManager.third_turning_point = 1;
+                        }
+                        else //같은 경우 처리 필요
+                        {
+                            scenarioManager.third_turning_point = 0;
+                        }
+                    }
+                    else
+                    {
+                        //쭉쭉 추가
+                    }
+
                 }
             });
     }

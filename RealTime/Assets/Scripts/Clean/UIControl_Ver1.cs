@@ -74,6 +74,11 @@ public class UIControl_Ver1 : MonoBehaviour
             yield return null;
         }
     }
+    
+    public void scenario_vote_count(string voteName)
+    {
+        firebase.CountVote_makeWay_Scenario(voteName);
+    }
 
 
     private void OnEnable()
@@ -81,12 +86,14 @@ public class UIControl_Ver1 : MonoBehaviour
         Lua.RegisterFunction("Agree", this, SymbolExtensions.GetMethodInfo(() => Agree((string)"")));
         Lua.RegisterFunction("Disagree", this, SymbolExtensions.GetMethodInfo(() => Disagree((string)"")));
         Lua.RegisterFunction("viewResultStart", this, SymbolExtensions.GetMethodInfo(() => viewResultStart((string)"")));
+        Lua.RegisterFunction("scenario_vote_count", this, SymbolExtensions.GetMethodInfo(() => scenario_vote_count((string)"")));
     }
     private void OnDisable()
     {
         Lua.UnregisterFunction("Agree");
         Lua.UnregisterFunction("Disagree");
         Lua.UnregisterFunction("viewResultStart");
+        Lua.UnregisterFunction("scenario_vote_count");
     }
 
 }

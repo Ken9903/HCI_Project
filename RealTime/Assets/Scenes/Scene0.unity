@@ -36862,6 +36862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiController: {fileID: 905850568}
+  scenarioManager: {fileID: 2052898111}
 --- !u!4 &1635866297
 Transform:
   m_ObjectHideFlags: 0

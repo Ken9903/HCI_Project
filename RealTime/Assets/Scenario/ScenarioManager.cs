@@ -17,16 +17,38 @@ public class ScenarioManager : MonoBehaviour
     public int notWatch = 0;
 
 
+    public int get_turning_point(string voteName)
+    {
+        if(voteName == "Vote1")
+        {
+            return first_turning_point;
+        }
+        else if(voteName == "Vote2")
+        {
+            return second_turning_point;
+        }
+        else if(voteName == "Vote3")
+        {
+            return third_turning_point;
+        }
+        else
+        {
+            //ÂßÂß ³ª°¡±â
+            Debug.Log("get_turning_point Error");
+            return 0;
+        }
+    }
+
     
 
 
     private void OnEnable()
     {
-        //Lua.RegisterFunction("playDonate", this, SymbolExtensions.GetMethodInfo(() => playDonate((string)"", (int)0, (string)"", (float)0)));
+        Lua.RegisterFunction("get_turning_point", this, SymbolExtensions.GetMethodInfo(() => get_turning_point((string)"")));
     }
     private void OnDisable()
     {
-        //Lua.UnregisterFunction("playDonate");
+       Lua.UnregisterFunction("get_turning_point");
     }
 
 }

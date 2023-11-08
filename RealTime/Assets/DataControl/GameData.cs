@@ -11,6 +11,10 @@ public class GameData
     public int scenario_Main_Num;
     public bool[] watch_scenario;
     public int notWatch;
+    public int first_turning_point;
+    public int second_turning_point;
+    public int third_turning_point;
+
 
     //RealTIme_Event_Trigger
     public bool init;

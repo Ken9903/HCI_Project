@@ -1,0 +1,162 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2018415623613548579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2018415623613548581}
+  - component: {fileID: 2018415623613548578}
+  - component: {fileID: 2018415623613548580}
+  m_Layer: 0
+  m_Name: ChattingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2018415623613548581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018415623613548579}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2018415623613548578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018415623613548579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afca756681bf3be4b85f447cda76c825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenarioManager: {fileID: 0}
+  player_chat_input: {fileID: 0}
+  chatList:
+  - chatData:
+    - "\uC544 \uC5B8\uC81C \uC640.."
+    - "\uAD81\uAE08\uD574 \uC8FD\uACA0\uB124"
+    - ....
+    - "\uC878\uB9AC\uB124\uC694.."
+    - "\uC544 \uBC30\uACE0\uD504\uB2E4"
+    - ..
+    - "\uC774\uAC70 \uBB54 \uBC29\uC1A1\uC784?"
+    - "\uC5B8\uC81C \uC2DC\uC791?"
+    - "\uC5BC\uB9C8\uB098 \uAE30\uB2E4\uB824\uC57C \uD568"
+    - "\uACE7 \uC2DC\uC791\uD560 \uB4EF"
+  - chatData:
+    - "\u3147\u3141\u3134\u3147"
+    - "\u314A\u3141\u3134\u3147"
+    - "\u3147\u3134\u314A"
+    - 
+    - "\u3148\u3137\u3142"
+    - "\u3147"
+    - xc
+    - dfa
+    - s
+    - fasd
+  - chatData:
+    - 3123
+    - 123
+    - zx
+    - 4123
+    - asd
+    - 4123
+    - eq
+    - 123
+    - 2
+    - 14
+  nameList:
+  - gda301
+  - deasdd09
+  - faczs99
+  - dixja33
+  - di30381
+  - ofkdi00
+  - ckdja932
+  - qwre0311
+  - cbjajd0392
+  - kvjasi0
+  - fjdjzus9301
+  - od093ka
+  - oi836
+  - ucnz99
+  - kfaj32
+  - fkquc00
+  - fkamcjs73
+  - dkau9372
+  - dofuq
+  - 9cjsud09
+  - ckskjd8
+  - ckal99
+  - ksdlf78
+  - cdksl567
+  - fmkslcrj38
+  - fsdjkfl9
+  - askldu9
+  - cuen0
+  - cnsjkd9
+  - fajskldm0
+  - kadljc72
+  - gfkltvmj9
+  - fadkrjmako0
+  - fsdjxfkls3
+  - eklgmkl3
+  - sdrjko3
+  - sel2
+  - sdjk35
+  - sdmfkld9
+  - ejajkld3
+  sex: 01000101000100010000010000010001010001000100000001000101010001000001010101000101
+  currentChatList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  chatPoint:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  wait_next_chat_max: 50
+  wait_next_chat_min: 25
+  max_chat_num: 7
+  max_chat_kind: 10
+  chatUi: {fileID: 1721769111255202155, guid: dcb07469362e56346b5c3dd2f054c205, type: 3}
+  manImage: {fileID: 21300000, guid: e1d72b4721a2458419ed723a6e5bf17a, type: 3}
+  womanImage: {fileID: 21300000, guid: 30a1876626849834db5f553a5f865e81, type: 3}
+  donation_panel: {fileID: 0}
+  donate_name_money: {fileID: 0}
+  donate_content: {fileID: 0}
+--- !u!114 &2018415623613548580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018415623613548579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbac798ab845ea24b90e2b327a8e66a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

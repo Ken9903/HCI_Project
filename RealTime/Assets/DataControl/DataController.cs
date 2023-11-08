@@ -83,6 +83,9 @@ public class DataController : MonoBehaviour
             bool[] temp_watch = { false, false, false }; //***나중에 시나리오 크기에 맞춰서 바꿔주기
             gameData.watch_scenario = temp_watch;
             gameData.notWatch = 0;
+            gameData.first_turning_point = 0;
+            gameData.second_turning_point = 0;
+            gameData.third_turning_point = 0;
 
             //RealTIme_Event_Trigger
             gameData.init = false;
@@ -128,6 +131,9 @@ public class DataController : MonoBehaviour
         gameData.scenario_Main_Num = scenarioManager.scenario_Main_Num;
         gameData.watch_scenario = scenarioManager.watch_scenario;
         gameData.notWatch = scenarioManager.notWatch;
+        gameData.first_turning_point = scenarioManager.first_turning_point;
+        gameData.second_turning_point = scenarioManager.second_turning_point;
+        gameData.third_turning_point = scenarioManager.third_turning_point;
 
         //RealTIme_Event_Trigger
         gameData.init = realTime_Event_Trigger.init;

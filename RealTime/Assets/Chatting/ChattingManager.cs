@@ -55,7 +55,7 @@ public class ChattingManager : MonoBehaviour //***½Ã³ª¸®¿À ³Ñ¹ö¿¡ ¿¬µ¿ÀÌ¾Æ´Ñ µ¶À
 
 
                 int chatData_Random_Index = UnityEngine.Random.Range(0, 10); //Ç¥½ÃÇÒ ·£´ý°ª ÃßÃâ
-                string target_Data = chatList[scenarioManager.scenario_Main_Num].chatData[chatData_Random_Index]; //Ç¥½ÃÇÒ Ã¤ÆÃ
+                string target_Data = chatList[scenarioManager.Chat_Num].chatData[chatData_Random_Index]; //Ç¥½ÃÇÒ Ã¤ÆÃ
                 int Name_Sex_Random_Index = UnityEngine.Random.Range(0, 40); // ÀÌ¸§°ú ¼ºº° ·£´ý ÃßÃâ
                 GameObject currentChatUi = Instantiate(chatUi, chatPoint[0]);
 
@@ -96,6 +96,8 @@ public class ChattingManager : MonoBehaviour //***½Ã³ª¸®¿À ³Ñ¹ö¿¡ ¿¬µ¿ÀÌ¾Æ´Ñ µ¶À
         }
 
     }
+
+
 
 
     public void playerChat_onClick()
@@ -147,6 +149,39 @@ public class ChattingManager : MonoBehaviour //***½Ã³ª¸®¿À ³Ñ¹ö¿¡ ¿¬µ¿ÀÌ¾Æ´Ñ µ¶À
         StartCoroutine(donate(name, money, content, delay));
     }
 
+    public void nextChat()
+    {
+        scenarioManager.Chat_Num++;
+    }
+    public void initChat()
+    {
+        scenarioManager.Chat_Num = 0;
+    }
+    public void scenarioChat_Setting(System.Single num)
+    {
+        scenarioManager.Chat_Num = (int)num;
+    }
+
+    public void chnage_chat_speed(System.Single min, System.Single max)
+    {
+        wait_next_chat_min = (int)min;
+        wait_next_chat_max = (int)max;
+    }
+    public void init_chat_speed()
+    {
+        wait_next_chat_min = 150;
+        wait_next_chat_max = 200;
+    }
+
+    public void set_chat_time_event()//½Ã³ª¸®¿À 0¹ø ½Ã°£¾Ë·ÁÁÖ´Â ÀÌº¥Æ®¿ë ÇÔ¼ö
+    {
+        int temp = 0; //*** ÇØ´ç ¹øÈ£ Ãß°¡ ¿ä¸Á
+        chatList[temp].chatData[0] = DateTime.Now.ToString("HH") +"½Ã°£ ÀÌ¾ß";
+        chatList[temp].chatData[1] = DateTime.Now.ToString("HH") + "½ÃÀÓ";
+        chatList[temp].chatData[2] = "Áö±Ý" + DateTime.Now.ToString("HH") + "½Ã";
+        chatList[temp].chatData[3] = "¤·¤·" + DateTime.Now.ToString("HH") + "½Ã";
+
+    }
 
 
 
@@ -154,15 +189,26 @@ public class ChattingManager : MonoBehaviour //***½Ã³ª¸®¿À ³Ñ¹ö¿¡ ¿¬µ¿ÀÌ¾Æ´Ñ µ¶À
     void Start()
     {
         StartCoroutine(playChatting());
-        //StartCoroutine(donate("guest", 1000, "³»°¡ ÈÄ¿øÀ» ÇÑ´Ù", 5));
     }
 
     private void OnEnable()
     {
         Lua.RegisterFunction("playDonate", this, SymbolExtensions.GetMethodInfo(() => playDonate((string)"", (int)0, (string)"", (float)0)));
+        Lua.RegisterFunction("scenarioChat_Setting", this, SymbolExtensions.GetMethodInfo(() => scenarioChat_Setting((int)0)));
+        Lua.RegisterFunction("nextChat", this, SymbolExtensions.GetMethodInfo(() => nextChat()));
+        Lua.RegisterFunction("initChat", this, SymbolExtensions.GetMethodInfo(() => initChat()));
+        Lua.RegisterFunction("chnage_chat_speed", this, SymbolExtensions.GetMethodInfo(() => chnage_chat_speed((int)0, (int)0)));
+        Lua.RegisterFunction("init_chat_speed", this, SymbolExtensions.GetMethodInfo(() => init_chat_speed()));
+        Lua.RegisterFunction("set_chat_time_event", this, SymbolExtensions.GetMethodInfo(() => set_chat_time_event()));
     }
     private void OnDisable()
     {
         Lua.UnregisterFunction("playDonate");
+        Lua.UnregisterFunction("scenarioChat_Setting");
+        Lua.UnregisterFunction("nextChat");
+        Lua.UnregisterFunction("initChat");
+        Lua.UnregisterFunction("chnage_chat_speed");
+        Lua.UnregisterFunction("init_chat_speed");
+        Lua.UnregisterFunction("set_chat_time_event");
     }
 }

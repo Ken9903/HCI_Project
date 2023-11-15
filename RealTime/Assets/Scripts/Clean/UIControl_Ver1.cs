@@ -69,8 +69,8 @@ public class UIControl_Ver1 : MonoBehaviour
 
         PieChart.fillAmount = 0f;
 
-        Result_Txt.text = (Percent_A*100).ToString("F1") + " %의 사람들이 찬성을" + "\n" +
-            (Percent_D*100).ToString("F1") + "%의 사람들이 반대를" + "\n" +
+        Result_Txt.text = (Percent_A*100).ToString("F1") + " %의 사람들이 1번선택지를" + "\n" +
+            (Percent_D*100).ToString("F1") + "%의 사람들이 2번선택지를" + "\n" +
             "선택했습니다.";
 
         ResultUI.SetActive(true);

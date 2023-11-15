@@ -9,6 +9,7 @@ public class RealTime_Event_Trigger : MonoBehaviour
     public ScenarioManager scenarioManager;
     public LocalNotification localNotification;
     public DataController dataController;
+    public FireBase_Ver1 fireBase;
 
 
     public float courutine_wait_second = 3f; //최적화 변수
@@ -87,15 +88,33 @@ public class RealTime_Event_Trigger : MonoBehaviour
                     Debug.Log("못봤어...");
                     //다수를 못봤을 때에는 따로 처리 해야함
                     Debug.Log("시나리오" + scenarioManager.scenario_Main_Num + "번 못봄");
-                    if(scenarioManager.scenario_Main_Num == 1)
+                    if(scenarioManager.scenario_Main_Num == 0)
                     {
-                        scenarioManager.first_turning_point = 5; //못봄
-                        Debug.Log("퍼스트 터닝포인트 변경 " + scenarioManager.first_turning_point + " 5가 디버그 번호");
+                        fireBase.CountVote_makeWay_Scenario("Vote1");
+                        Debug.Log("퍼스트 터닝포인트 변경 " + scenarioManager.first_turning_point + "번");
                     }
-                    else if(scenarioManager.scenario_Main_Num == 2)
+                    else if(scenarioManager.scenario_Main_Num == 1)
                     {
-                        scenarioManager.second_turning_point = 5;
-                        Debug.Log("세컨드 터닝포인트 변경" + scenarioManager.second_turning_point + "5가 디버그 번호");
+                        fireBase.CountVote_makeWay_Scenario_3("Vote2");
+                        Debug.Log("세컨드 터닝포인트 변경" + scenarioManager.second_turning_point + "번");
+                    }
+                   else if(scenarioManager.scenario_Main_Num == 2)
+                    {
+
+                        fireBase.CountVote_makeWay_Scenario("Vote3");
+                        Debug.Log("세컨드 터닝포인트 변경" + scenarioManager.second_turning_point + "번");
+                    }
+                    else if(scenarioManager.scenario_Main_Num == 3)
+                    {
+                        Debug.Log("작성 요망");
+                    }
+                    else if(scenarioManager.scenario_Main_Num == 4)
+                    {
+                        Debug.Log("작성 요망");
+                    }
+                    else
+                    {
+                        Debug.Log("Not watch Error");
                     }
                     //쭉쭉 나가기
                     //***

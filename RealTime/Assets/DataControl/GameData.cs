@@ -31,4 +31,8 @@ public class GameData
     public int wait_next_chat_max;
     public int wait_next_chat_min;
 
+    //Event
+    public bool profile_btn;
+    public bool memo_btn;
+
 }

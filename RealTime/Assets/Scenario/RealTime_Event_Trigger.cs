@@ -43,6 +43,9 @@ public class RealTime_Event_Trigger : MonoBehaviour
 
                 //데이터 세이브
                 dataController.SaveGameData();
+
+                //씬 이동
+                scenarioManager.sceneChange("Scene" + (scenarioManager.scenario_Main_Num - 1));
             }
 
 

@@ -102,6 +102,10 @@ public class DataController : MonoBehaviour
             gameData.wait_next_chat_max = 50;
             gameData.wait_next_chat_min = 25;
 
+            //Event
+            gameData.profile_btn = false;
+            gameData.memo_btn = false;
+
 
 
         }
@@ -121,6 +125,10 @@ public class DataController : MonoBehaviour
         //ChattingManager
         chattingManager.wait_next_chat_max = gameData.wait_next_chat_max;
         chattingManager.wait_next_chat_min = gameData.wait_next_chat_min;
+
+        //Event
+        scenarioManager.profile_btn = gameData.profile_btn;
+        scenarioManager.memo_btn = gameData.memo_btn;
 
 
     }
@@ -149,6 +157,10 @@ public class DataController : MonoBehaviour
         //ChattingManager
         gameData.wait_next_chat_max = chattingManager.wait_next_chat_max;
         gameData.wait_next_chat_min = chattingManager.wait_next_chat_min;
+
+        //Event
+        gameData.profile_btn = scenarioManager.profile_btn;
+        gameData.memo_btn = scenarioManager.memo_btn;
 
 
         string ToJsonData = JsonUtility.ToJson(gameData);

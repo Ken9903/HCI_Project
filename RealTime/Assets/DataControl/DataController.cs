@@ -115,7 +115,7 @@ public class DataController : MonoBehaviour
         scenarioManager.notWatch = gameData.notWatch;
 
         //RealTIme_Event_Trigger
-        realTime_Event_Trigger.init = gameData.init;
+        //realTime_Event_Trigger.init = gameData.init;
         DateTime temp;
         DateTime.TryParse(gameData.year + '/' + gameData.month + '/' + gameData.day + " " + gameData.hour +':'+ gameData.minute + ':' + gameData.second, out temp);
         realTime_Event_Trigger.startTime = temp;
@@ -144,7 +144,7 @@ public class DataController : MonoBehaviour
         gameData.third_turning_point = scenarioManager.third_turning_point;
 
         //RealTIme_Event_Trigger
-        gameData.init = realTime_Event_Trigger.init;
+        //gameData.init = realTime_Event_Trigger.init;
 
         gameData.year = realTime_Event_Trigger.startTime.Year.ToString();
         gameData.month = realTime_Event_Trigger.startTime.Month.ToString();

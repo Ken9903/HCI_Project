@@ -20,7 +20,7 @@ public class FireBase_Ver1 : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
 
         Firebase.FirebaseApp.CheckDependenciesAsync().ContinueWithOnMainThread(task =>
@@ -178,7 +178,8 @@ public class FireBase_Ver1 : MonoBehaviour
             {
                 if (task.IsFaulted)
                 {
-                    Debug.LogError("Read Error");
+                    Debug.LogError("Read Error_2");
+                    CountVote_makeWay_Scenario(voteName);
                 }
                 else if (task.IsCompleted)
                 {
@@ -290,7 +291,8 @@ public class FireBase_Ver1 : MonoBehaviour
             {
                 if (task.IsFaulted)
                 {
-                    Debug.LogError("Read Error");
+                    Debug.LogError("Read Error_3");
+                    CountVote_makeWay_Scenario_3(voteName);
                 }
                 else if (task.IsCompleted)
                 {
